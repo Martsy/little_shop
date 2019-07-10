@@ -1,4 +1,4 @@
-<form>
+<html>
   <%= form_tag "/items/#{@review.item_id}/#{@review.id}", method: :patch do %>
     <%= label_tag :title, 'Title'%>
     <%= text_field_tag :title, @review.title%>
@@ -11,4 +11,4 @@
 
     <%= submit_tag 'Update Review'%>
     <% end %>
-</form>
+</html>
