@@ -17,6 +17,7 @@
     <article class="item-show-review" id="review-<%=review.id%>">
       <h3>Title: <%= review.title%> </h3>
       <p>Rating: <%= review.rating%> </p>
-      <p> Content: <%=review.content%> </p>
+      <p>Content: <%=review.content%> </p>
+      <p> <%= button_to 'Edit Review', "/items/#{review.item_id}/#{review.id}/edit", method: :get %></p>
   <% end %>
 </section>

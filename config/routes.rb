@@ -19,4 +19,6 @@ Rails.application.routes.draw do
 
   get "/items/:item_id/reviews/new", to: 'reviews#new'
   post "/items/:item_id/reviews", to: 'reviews#create'
+  get '/items/:item_id/:review_id/edit', to: 'reviews#edit'
+  patch '/items/:item_id/:review_id', to: 'reviews#update'
 end
