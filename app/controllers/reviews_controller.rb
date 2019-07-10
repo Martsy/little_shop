@@ -38,7 +38,6 @@ class ReviewsController < ApplicationController
     redirect_to "/items/#{@review.item.id}"
   end
 
-
   private
 
   def review_params
