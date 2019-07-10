@@ -15,9 +15,9 @@
 <section id="item-show-reviews">
   <% @item.reviews.each do |review| %>
     <article class="item-show-review" id="review-<%=review.id%>">
-      <h3>Title: <%= review.title%> </h3>
-      <p>Rating: <%= review.rating%> </p>
-      <p> Content: <%=review.content%> </p>
-      <%= button_to 'Delete Review', "/items/#{@item.id}/#{review.id}", method: :delete %>
+      <h3>Title: <%= review.title %> </h3>
+      <p>Rating: <%= review.rating %> </p>
+      <p> Content: <%= review.content %> </p>
+      <p><%= button_to 'Edit Review', "/items/#{review.item_id}/#{review.id}/edit", method: :get %></p>
+      <p><%= button_to 'Delete Review', "/items/#{@item.id}/#{review.id}", method: :delete %></p>
   <% end %>
-</section>
