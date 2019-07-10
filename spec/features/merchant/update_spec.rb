@@ -40,5 +40,17 @@ RSpec.describe 'Existing Merchant Update' do
         expect(page).to have_content("#{city} #{state} #{zip}")
       end
     end
+
+    it "Flash message generated for incomplete merchant details" do
+
+      visit "/merchants/#{@megan.id}/edit"
+      fill_in 'Name', with: 'Monsters R Us'
+      fill_in 'City', with: ''
+      click_button 'Update Merchant'
+
+      expect(page).to have_content('Complete all merchant details to continue')
+      expect(current_path).to eq("/merchants/#{@megan.id}/edit")
+    end
+
   end
 end
