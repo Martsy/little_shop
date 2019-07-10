@@ -30,5 +30,23 @@ RSpec.describe 'New Merchant Creation' do
       expect(current_path).to eq('/merchants')
       expect(page).to have_link(name)
     end
+
+    it "Flash message generated for incomplete merchant details" do
+      visit '/merchants/new'
+
+      name = 'Megans Marmalades'
+      address = '123 Main St'
+      city = "Denver"
+      state = "CO"
+      zip = 80218
+
+      fill_in 'Name', with: name
+      fill_in 'City', with: city
+      click_button 'Create Merchant'
+
+      expect(page).to have_content('Complete all merchant details to continue')
+      expect(current_path).to eq("/merchants/new")
+    end
+
   end
 end
