@@ -33,4 +33,23 @@ RSpec.describe 'edit review' do
       end
     end
   end
+
+  it "Flash message generated for incomplete review" do
+
+    visit "/items/#{@ogre.id}"
+
+    within "#review-#{@review.id}" do
+      click_button 'Edit Review'
+    end
+
+    expect(current_path).to eq("/items/#{@ogre.id}/#{@review.id}/edit")
+
+    fill_in 'Title', with: 'Great'
+    fill_in 'Rating', with: ''
+    click_on 'Update Review'
+
+    expect(page).to have_content('Incomplete Review')
+    expect(current_path).to eq("/items/#{@ogre.id}/#{@review.id}/edit")
+  end
+
 end

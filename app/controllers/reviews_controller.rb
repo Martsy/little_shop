@@ -22,7 +22,13 @@ class ReviewsController < ApplicationController
   def update
     review = Review.find(params[:review_id])
     review.update(review_params)
-    redirect_to "/items/#{review.item_id}"
+
+    if !review.save
+      redirect_to "/items/#{review.item_id}/#{review.id}/edit"
+      flash[:notice] = 'Incomplete Review'
+    else
+      redirect_to "/items/#{review.item_id}"
+    end
   end
 
   private
