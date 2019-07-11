@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class Cart
   attr_reader :contents
@@ -21,18 +20,10 @@ class Cart
   end
 
   def item_and_quantity
-    contents.map do |item_id, quantity|
-      # binding.pry
+    contents.map do |item_id, _quantity|
       item_id.to_i
     end
   end
-
-#might not need
-  # def item
-  #   contents.map do |item_id, quantity|
-  #     item_id.to_i
-  #   end
-  # end
 
   def subtotal(item_id)
     item = Item.find(item_id)
