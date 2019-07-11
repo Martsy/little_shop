@@ -1,5 +1,6 @@
-class ReviewsController < ApplicationController
+# frozen_string_literal: true
 
+class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @item = Item.find(params[:item_id])
@@ -29,6 +30,12 @@ class ReviewsController < ApplicationController
     else
       redirect_to "/items/#{review.item_id}"
     end
+  end
+
+  def destroy
+    @review = Review.find(params[:review_id])
+    @review.destroy
+    redirect_to "/items/#{@review.item.id}"
   end
 
   private
