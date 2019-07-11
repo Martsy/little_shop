@@ -76,7 +76,6 @@ RSpec.describe 'Remove Item from Cart' do
         expect(page).to_not have_content("Name: #{@ogre.name}")
         expect(current_path).to eq('/cart')
       end
-
     end
   end
 end
