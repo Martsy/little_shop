@@ -28,11 +28,11 @@ class Cart
   end
 
 #might not need
-  def item
-    contents.map do |item_id, quantity|
-      item_id.to_i
-    end
-  end
+  # def item
+  #   contents.map do |item_id, quantity|
+  #     item_id.to_i
+  #   end
+  # end
 
   def subtotal(item_id)
     item = Item.find(item_id)
