@@ -9,21 +9,14 @@ RSpec.describe 'Merchant Show Page' do
 
     it 'I see merchant name and address' do
       visit "/merchants/#{@megan.id}"
-
       expect(page).to have_content(@megan.name)
-
-      within '.address' do
-        expect(page).to have_content(@megan.address)
-        expect(page).to have_content("#{@megan.city} #{@megan.state} #{@megan.zip}")
-      end
+      expect(page).to have_content(@megan.address)
+      expect(page).to have_content("#{@megan.city} #{@megan.state} #{@megan.zip}")
     end
 
-    it 'I see a link to this merchants items' do
+    it 'I see a link for items' do
       visit "/merchants/#{@megan.id}"
-
-      click_link "Items"
-
-      
+      expect(page).to have_button("Merchant Items")
     end
   end
 end

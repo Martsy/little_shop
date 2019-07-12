@@ -7,7 +7,6 @@ class CartsController < ApplicationController
     item = Item.find(params[:item_id])
     cart.add_item(item.id)
     session[:cart] = cart.contents
-    # quantity = cart.count_of(item.id)
     flash[:notice] = "You now have #{session[:cart][item.id.to_s]} #{item.name} in your cart."
     redirect_to items_path
   end
@@ -40,22 +39,16 @@ class CartsController < ApplicationController
   def decrease_item
     item = Item.find(params[:item_id])
     cart.contents[item.id.to_s] -= 1
-    if cart.contents[item.id.to_s] == 0
+    if cart.contents[item.id.to_s].zero?
       remove_item
     else
       redirect_to cart_path
     end
   end
 
-
-  private
+  # private
 
   # def set_cart
   #   @cart = Item.find(params[:id])
   # end
-#
-#   def cart_params
-#     params.require(:cart).permit(:)
-#   end
-# end
 end

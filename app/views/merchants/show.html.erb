@@ -1,3 +1,4 @@
+
 <h1><%= @merchant.name %></h1>
 
 <section class='address'>
@@ -6,4 +7,9 @@
 </section>
 
 <%= button_to 'Edit', "/merchants/#{@merchant.id}/edit", method: :get %>
-<%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete %>
+
+<% if !@merchant.ordered? %>
+  <%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete %>
+<% end %>
+
+<%= button_to 'Merchant Items', "/merchants/#{@merchant.id}/items", method: :get %>
