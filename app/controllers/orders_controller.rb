@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @items = Item.find(cart.item_and_quantity)
-    # binding.pry
   end
 
   def create
@@ -25,8 +24,6 @@ class OrdersController < ApplicationController
   def show
     @items = Item.find(cart.item_and_quantity)
     @order = Order.find(params[:id])
-    # binding.pry
-    # @order_items = @order.order_items
   end
 
   private

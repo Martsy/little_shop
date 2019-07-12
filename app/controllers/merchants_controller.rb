@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MerchantsController < ApplicationController
   def index
     @merchants = Merchant.all
@@ -7,14 +9,12 @@ class MerchantsController < ApplicationController
     @merchant = Merchant.find(params[:id])
   end
 
-  def new
-  end
+  def new; end
 
   def create
     @merchant = Merchant.create(merchant_params)
-
     if !@merchant.save
-      redirect_to "/merchants/new"
+      redirect_to '/merchants/new'
       flash[:notice] = 'Complete all merchant details to continue'
     else
       redirect_to '/merchants'

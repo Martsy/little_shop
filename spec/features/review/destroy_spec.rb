@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require "rails_helper"
+
+require 'rails_helper'
 
 RSpec.describe 'Review' do
   before :each do
@@ -25,14 +26,13 @@ RSpec.describe 'Review' do
 
   describe 'when I delete a review' do
     it "returns me to the item's show page" do
-      visit "/items/#{@ogre.id}"
+      visit item_path(@ogre)
 
       within "#review-#{@review1.id}" do
-
         click_button('Delete Review')
       end
 
-      expect(current_path).to eq("/items/#{@ogre.id}")
+      expect(current_path).to eq(item_path(@ogre))
 
       expect(page).to_not have_content(@review1.title)
       expect(page).to_not have_content("Rating: #{@review1.rating}")

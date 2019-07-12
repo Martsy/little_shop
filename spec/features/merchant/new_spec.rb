@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'New Merchant Creation' do
   describe 'As a Visitor' do
     it 'I can link to a new merchant page from merchant index' do
       visit '/merchants'
-
       click_link 'New Merchant'
-
       expect(current_path).to eq('/merchants/new')
     end
 
@@ -15,8 +15,8 @@ RSpec.describe 'New Merchant Creation' do
 
       name = 'Megans Marmalades'
       address = '123 Main St'
-      city = "Denver"
-      state = "CO"
+      city = 'Denver'
+      state = 'CO'
       zip = 80218
 
       fill_in 'Name', with: name
@@ -31,13 +31,13 @@ RSpec.describe 'New Merchant Creation' do
       expect(page).to have_link(name)
     end
 
-    it "Flash message generated for incomplete merchant details" do
+    it 'Flash message generated for incomplete merchant details' do
       visit '/merchants/new'
 
       name = 'Megans Marmalades'
       address = '123 Main St'
-      city = "Denver"
-      state = "CO"
+      city = 'Denver'
+      state = 'CO'
       zip = 80218
 
       fill_in 'Name', with: name
@@ -45,8 +45,7 @@ RSpec.describe 'New Merchant Creation' do
       click_button 'Create Merchant'
 
       expect(page).to have_content('Complete all merchant details to continue')
-      expect(current_path).to eq("/merchants/new")
+      expect(current_path).to eq('/merchants/new')
     end
-
   end
 end

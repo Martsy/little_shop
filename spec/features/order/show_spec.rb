@@ -61,7 +61,7 @@ RSpec.describe 'New Order' do
       expect(page).to have_content('123 Smith Road')
       expect(page).to have_content('Denver')
       expect(page).to have_content('CO')
-      expect(page).to have_content(80_202)
+      expect(page).to have_content(80202)
       expect(page).to have_content("Order Date: #{@order.created_at.to_formatted_s(:short)}")
     end
   end
