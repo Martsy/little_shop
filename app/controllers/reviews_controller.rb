@@ -2,7 +2,6 @@
 
 class ReviewsController < ApplicationController
   def new
-    @review = Review.new
     @item = Item.find(params[:item_id])
   end
 
@@ -23,7 +22,6 @@ class ReviewsController < ApplicationController
   def update
     review = Review.find(params[:review_id])
     review.update(review_params)
-
     if !review.save
       redirect_to "/items/#{review.item_id}/#{review.id}/edit"
       flash[:notice] = 'Incomplete Review'
