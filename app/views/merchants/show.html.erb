@@ -13,3 +13,9 @@
 <% end %>
 
 <%= button_to 'Merchant Items', "/merchants/#{@merchant.id}/items", method: :get %>
+
+<section>
+  <p>Merchant sells <%= @merchant.merch_sold %> items.</p>
+  <p>Average price: <%= @merchant.average_price %></p>
+  <p>Cities sold to: <%= @merchant.cities %>(',')</p>
+</section>

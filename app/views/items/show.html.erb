@@ -14,7 +14,7 @@
 </section>
 
 
-<p> Review</p>
+<h2> Reviews</h2>
 
 <section id="item-show-reviews">
   <% @item.reviews.each do |review| %>
@@ -25,4 +25,18 @@
       <p><%= button_to 'Edit Review', "/items/#{review.item_id}/#{review.id}/edit", method: :get %></p>
       <p><%= button_to 'Delete Review', "/items/#{@item.id}/#{review.id}", method: :delete  %></p>
   <% end %>
+</section>
+
+<h2>Item Statistics</h2>
+
+<section id='item-statistics'>
+<h3>Best Reviews</h3>
+  <% @item.best_reviews.each do |review| %>
+    <p> Title <%= review.title %> Rating: <%= review.rating %></p>
+  <% end %>
+<h3>Worst Reviews</h3>
+  <% @item.worst_reviews.each do |review| %>
+     <p><%= review.title %> Rating: <%= review.rating %></p>
+  <% end %>
+<h3>Average Rating:</h3>  <%= @item.average_rating %>
 </section>
